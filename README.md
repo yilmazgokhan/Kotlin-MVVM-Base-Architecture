@@ -11,7 +11,6 @@
 
 > I recommend this structure for basic projects that are not extensive.
 
-
 ## Introduction
 
 This project is intent to provide a template with basic MVVM architecture framework.
@@ -22,14 +21,12 @@ This project is intent to provide a template with basic MVVM architecture framew
 - The project has hilt integration
 - The project has Navigation Component integration
 
-
 ## Project Structure
 
 - base: Base class for View and ViewModel instances.
 - di: The directory will contain the classes responsible for dependency injection.
 - ui: View classes along with their corresponding ViewModel in presentation.
 - util: Utility classes.
-
 
 ## MVVM Design Pattern
 
@@ -45,6 +42,13 @@ The MVVM pattern supports two-way data binding between the View and ViewModel an
 
 <img src="/screenshots/mvvm.png">
 
+## TO DO
+
+- [ ] Integration of Retrofit.
+- [ ] Integration of Repository Pattern.
+- [ ] Integration of UseCase.
+- [ ] Example of a HTTP call.
+- [ ] Add some unit tests.
 
 ## Libraries
 
@@ -52,15 +56,13 @@ The MVVM pattern supports two-way data binding between the View and ViewModel an
 - [Fragment KTX](https://developer.android.com/kotlin/ktx)
 - [Android Architecture Components](https://developer.android.com/topic/libraries/architecture/index.html)
 - [Coroutines](https://developer.android.com/kotlin/coroutines)
-- [Dagger 2 (2.28)](https://github.com/google/dagger)
+- [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
 - [Coil](https://coil-kt.github.io/coil/)
 - [Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)
 - [Android Util](https://github.com/Blankj/AndroidUtilCode)
 
-
 ### Contributing to Project
 
 - All contributions are welcome! Please fork this repository and contribute back using pull requests.
-
 
 > Don't forget to star ⭐ the repo it motivates me to share more open source
