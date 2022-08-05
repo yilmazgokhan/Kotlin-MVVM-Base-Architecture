@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--TODO("The class will delete when [TestFragment] deleted")
+    The class created for show Test item on bottom menu-->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_test"
+    app:startDestination="@id/testFragment">
+
+    <fragment
+        android:id="@+id/testFragment"
+        android:name="com.yilmazgokhan.basestructure.ui.test.TestFragment"
+        android:label="TestFragment" />
+</navigation>
