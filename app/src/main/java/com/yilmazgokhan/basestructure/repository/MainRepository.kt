@@ -5,5 +5,5 @@ import javax.inject.Inject
 
 class MainRepository @Inject constructor(private val apiHelper: ApiHelper) {
 
-    suspend fun getAData() = apiHelper.getAData()
+    suspend fun getUser(username: String) = apiHelper.getUser(username = username)
 }
