@@ -34,6 +34,8 @@ class HomeFragmentViewModel @ViewModelInject constructor(
 
     init {
         LogUtils.d("$this initialize")
+
+        getUser("yilmazgokhan")
     }
 
     /**
