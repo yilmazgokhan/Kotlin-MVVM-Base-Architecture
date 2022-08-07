@@ -1,5 +1,6 @@
 package com.yilmazgokhan.basestructure.ui.home
 
+import android.util.Log
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
@@ -11,9 +12,12 @@ import com.yilmazgokhan.basestructure.base.BaseViewModel
 import com.yilmazgokhan.basestructure.data.model.UserResponse
 import com.yilmazgokhan.basestructure.di.qualifier.IoDispatcher
 import com.yilmazgokhan.basestructure.data.repository.UserRepository
+import com.yilmazgokhan.basestructure.domain.GetUserUseCase
 import com.yilmazgokhan.basestructure.util.State
+import com.yilmazgokhan.basestructure.util.Status
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 /**
@@ -23,7 +27,8 @@ import kotlinx.coroutines.launch
 class HomeFragmentViewModel @ViewModelInject constructor(
     @Assisted private val savedStateHandle: SavedStateHandle,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
-    private val userRepository: UserRepository
+    private val getUserUseCase: GetUserUseCase
+    //private val userRepository: UserRepository
 ) : BaseViewModel() {
 
     //region city info
@@ -43,6 +48,12 @@ class HomeFragmentViewModel @ViewModelInject constructor(
      */
     private fun getUser(username: String) {
         viewModelScope.launch {
+            getUserUseCase.invoke("yilmazgokhan").collect {
+                Log.d("TAG", ": ")
+            }
+        }
+        /*
+        viewModelScope.launch {
             _user.postValue(State.loading(null))
             userRepository.getUser(username = username).let {
                 if (it.isSuccessful) {
@@ -51,5 +62,6 @@ class HomeFragmentViewModel @ViewModelInject constructor(
                     _user.postValue(State.error(it.errorBody().toString(), null))
             }
         }
+         */
     }
 }

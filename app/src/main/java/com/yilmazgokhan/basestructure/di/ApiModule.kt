@@ -1,9 +1,10 @@
 package com.yilmazgokhan.basestructure.di
 
 import com.yilmazgokhan.basestructure.BuildConfig
-import com.yilmazgokhan.basestructure.data.remote.UserHelperImpl
+import com.yilmazgokhan.basestructure.data.remote.UserDataSourceImpl
 import com.yilmazgokhan.basestructure.data.remote.UserService
 import com.yilmazgokhan.basestructure.data.repository.UserDataSource
+import com.yilmazgokhan.basestructure.data.repository.UserRepository
 import com.yilmazgokhan.basestructure.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -49,9 +50,11 @@ object ApiModule {
 
     @Provides
     @Singleton
-    fun provideUserService(retrofit: Retrofit) = retrofit.create(UserService::class.java)
+    fun provideUserService(retrofit: Retrofit): UserService =
+        retrofit.create(UserService::class.java)
 
     @Provides
     @Singleton
-    fun provideUserDataSource(userDataSource: UserHelperImpl): UserDataSource = userDataSource
+    fun provideUserDataSourceImpl(userDataSource: UserDataSourceImpl): UserDataSource =
+        userDataSource
 }
