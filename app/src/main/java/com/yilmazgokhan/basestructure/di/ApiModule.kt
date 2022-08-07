@@ -1,9 +1,9 @@
 package com.yilmazgokhan.basestructure.di
 
 import com.yilmazgokhan.basestructure.BuildConfig
-import com.yilmazgokhan.basestructure.repository.api.ApiHelper
-import com.yilmazgokhan.basestructure.repository.api.ApiHelperImpl
-import com.yilmazgokhan.basestructure.repository.api.ApiService
+import com.yilmazgokhan.basestructure.repository.api.UserHelper
+import com.yilmazgokhan.basestructure.repository.api.UserHelperImpl
+import com.yilmazgokhan.basestructure.repository.api.UserService
 import com.yilmazgokhan.basestructure.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -49,9 +49,9 @@ object ApiModule {
 
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit) = retrofit.create(ApiService::class.java)
+    fun provideUserService(retrofit: Retrofit) = retrofit.create(UserService::class.java)
 
     @Provides
     @Singleton
-    fun provideApiHelper(apiHelper: ApiHelperImpl): ApiHelper = apiHelper
+    fun provideUserHelper(userHelper: UserHelperImpl): UserHelper = userHelper
 }

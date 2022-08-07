@@ -4,8 +4,8 @@ import com.yilmazgokhan.basestructure.data.UserResponse
 import retrofit2.Response
 import javax.inject.Inject
 
-class ApiHelperImpl @Inject constructor(private val apiService: ApiService) : ApiHelper {
+class UserHelperImpl @Inject constructor(private val userService: UserService) : UserHelper {
 
     override suspend fun getUser(username: String): Response<UserResponse> =
-        apiService.getUser(username = username)
+        userService.getUser(username = username)
 }

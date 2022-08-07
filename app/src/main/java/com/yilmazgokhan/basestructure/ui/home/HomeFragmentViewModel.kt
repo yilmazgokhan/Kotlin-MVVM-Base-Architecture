@@ -10,7 +10,7 @@ import com.blankj.utilcode.util.LogUtils
 import com.yilmazgokhan.basestructure.base.BaseViewModel
 import com.yilmazgokhan.basestructure.data.UserResponse
 import com.yilmazgokhan.basestructure.di.qualifier.IoDispatcher
-import com.yilmazgokhan.basestructure.repository.MainRepository
+import com.yilmazgokhan.basestructure.repository.UserRepository
 import com.yilmazgokhan.basestructure.repository.Resource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -23,7 +23,7 @@ import kotlinx.coroutines.launch
 class HomeFragmentViewModel @ViewModelInject constructor(
     @Assisted private val savedStateHandle: SavedStateHandle,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
-    private val mainRepository: MainRepository
+    private val userRepository: UserRepository
 ) : BaseViewModel() {
 
     //region city info
@@ -44,7 +44,7 @@ class HomeFragmentViewModel @ViewModelInject constructor(
     private fun getUser(username: String) {
         viewModelScope.launch {
             _user.postValue(Resource.loading(null))
-            mainRepository.getUser(username = username).let {
+            userRepository.getUser(username = username).let {
                 if (it.isSuccessful) {
                     _user.postValue(Resource.success(it.body()))
                 } else
