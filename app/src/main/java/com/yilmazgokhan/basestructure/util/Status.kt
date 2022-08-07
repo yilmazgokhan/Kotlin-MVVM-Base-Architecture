@@ -1,4 +1,4 @@
-package com.yilmazgokhan.basestructure.repository
+package com.yilmazgokhan.basestructure.util
 
 enum class Status {
     SUCCESS,

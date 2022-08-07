@@ -8,10 +8,10 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.blankj.utilcode.util.LogUtils
 import com.yilmazgokhan.basestructure.base.BaseViewModel
-import com.yilmazgokhan.basestructure.data.UserResponse
+import com.yilmazgokhan.basestructure.data.model.UserResponse
 import com.yilmazgokhan.basestructure.di.qualifier.IoDispatcher
-import com.yilmazgokhan.basestructure.repository.UserRepository
-import com.yilmazgokhan.basestructure.repository.Resource
+import com.yilmazgokhan.basestructure.data.repository.UserRepository
+import com.yilmazgokhan.basestructure.util.State
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
@@ -27,8 +27,8 @@ class HomeFragmentViewModel @ViewModelInject constructor(
 ) : BaseViewModel() {
 
     //region city info
-    private val _user = MutableLiveData<Resource<UserResponse?>>()
-    val user: LiveData<Resource<UserResponse?>>
+    private val _user = MutableLiveData<State<UserResponse?>>()
+    val user: LiveData<State<UserResponse?>>
         get() = _user
     //endregion
 
@@ -43,12 +43,12 @@ class HomeFragmentViewModel @ViewModelInject constructor(
      */
     private fun getUser(username: String) {
         viewModelScope.launch {
-            _user.postValue(Resource.loading(null))
+            _user.postValue(State.loading(null))
             userRepository.getUser(username = username).let {
                 if (it.isSuccessful) {
-                    _user.postValue(Resource.success(it.body()))
+                    _user.postValue(State.success(it.body()))
                 } else
-                    _user.postValue(Resource.error(it.errorBody().toString(), null))
+                    _user.postValue(State.error(it.errorBody().toString(), null))
             }
         }
     }

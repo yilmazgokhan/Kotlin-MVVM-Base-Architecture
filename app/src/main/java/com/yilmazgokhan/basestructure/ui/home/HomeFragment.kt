@@ -5,8 +5,8 @@ import androidx.fragment.app.viewModels
 import com.blankj.utilcode.util.LogUtils
 import com.yilmazgokhan.basestructure.R
 import com.yilmazgokhan.basestructure.base.BaseFragment
-import com.yilmazgokhan.basestructure.data.UserResponse
-import com.yilmazgokhan.basestructure.repository.Status
+import com.yilmazgokhan.basestructure.data.model.UserResponse
+import com.yilmazgokhan.basestructure.util.Status
 import com.yilmazgokhan.basestructure.util.showMessage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi

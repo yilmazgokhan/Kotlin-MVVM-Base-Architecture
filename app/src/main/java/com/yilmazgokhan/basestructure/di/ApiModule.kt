@@ -1,9 +1,9 @@
 package com.yilmazgokhan.basestructure.di
 
 import com.yilmazgokhan.basestructure.BuildConfig
-import com.yilmazgokhan.basestructure.repository.api.UserHelper
-import com.yilmazgokhan.basestructure.repository.api.UserHelperImpl
-import com.yilmazgokhan.basestructure.repository.api.UserService
+import com.yilmazgokhan.basestructure.data.remote.UserHelperImpl
+import com.yilmazgokhan.basestructure.data.remote.UserService
+import com.yilmazgokhan.basestructure.data.repository.UserDataSource
 import com.yilmazgokhan.basestructure.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -53,5 +53,5 @@ object ApiModule {
 
     @Provides
     @Singleton
-    fun provideUserHelper(userHelper: UserHelperImpl): UserHelper = userHelper
+    fun provideUserDataSource(userDataSource: UserHelperImpl): UserDataSource = userDataSource
 }
