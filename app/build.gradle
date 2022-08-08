@@ -72,6 +72,14 @@ dependencies {
     // Image
     implementation "io.coil-kt:coil:0.11.0"
 
+    // Material Dialog
+    implementation "com.afollestad.material-dialogs:core:3.3.0"
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
+    implementation "com.squareup.okhttp3:logging-interceptor:4.5.0"
+
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

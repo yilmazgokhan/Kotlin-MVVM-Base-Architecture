@@ -1,10 +1,26 @@
 package com.yilmazgokhan.basestructure.util
 
 /**
- * A generic class that holds a value with its loading status.
+ * Resource data class for handle HTTP requests as live data
  */
-sealed class Resource<out T> {
-    class Success<T>(val data: T) : Resource<T>()
-    class Error(val exception: Exception) : Resource<Nothing>()
-    object Loading : Resource<Nothing>()
+data class Resource<out T>(
+    val status: Status,
+    val data: T?,
+    val message: String?
+) {
+    companion object {
+
+        fun <T> success(data: T?): Resource<T> {
+            return Resource(Status.SUCCESS, data, null)
+        }
+
+        fun <T> error(message: String, data: T? = null): Resource<T> {
+            return Resource(Status.ERROR, data, message)
+        }
+
+        fun <T> loading(): Resource<T> {
+            return Resource(Status.LOADING, null, null)
+        }
+
+    }
 }
