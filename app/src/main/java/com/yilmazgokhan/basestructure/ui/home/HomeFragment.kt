@@ -7,7 +7,6 @@ import com.yilmazgokhan.basestructure.R
 import com.yilmazgokhan.basestructure.base.BaseFragment
 import com.yilmazgokhan.basestructure.data.remote.model.UserResponse
 import com.yilmazgokhan.basestructure.util.Status
-import com.yilmazgokhan.basestructure.util.showMessage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -24,6 +23,9 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
         this.observeModel()
     }
 
+    /**
+     * Observe LiveData models
+     */
     private fun observeModel() {
         viewModel.user.observe(viewLifecycleOwner, {
             when (it.status) {
@@ -46,14 +48,11 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
         })
     }
 
+    /**
+     * Prepare components & show data in UI
+     *
+     */
     private fun prepareComponents(user: UserResponse?) {
-        if (user == null) {
-            requireContext().showMessage(
-                stringId = R.string.something_went_wrong,
-                onPositive = {
-                    it.dismiss()
-                }
-            )
-        }
+        // TODO: 7/8/2022
     }
 }

@@ -1,12 +1,12 @@
-package com.yilmazgokhan.basestructure.data.repository
+package com.yilmazgokhan.basestructure.domain.repository
 
 import com.yilmazgokhan.basestructure.data.remote.model.UserResponse
 import retrofit2.Response
 
 /**
- * Methods of User Data Source
+ * Methods of User Repository
  */
-interface UserDataSource {
+interface UserRepository {
 
     suspend fun getUser(username: String): Response<UserResponse>
 }

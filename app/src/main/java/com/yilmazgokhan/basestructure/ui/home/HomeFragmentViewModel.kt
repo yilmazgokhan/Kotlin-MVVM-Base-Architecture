@@ -12,7 +12,7 @@ import com.yilmazgokhan.basestructure.R
 import com.yilmazgokhan.basestructure.base.BaseViewModel
 import com.yilmazgokhan.basestructure.data.remote.model.UserResponse
 import com.yilmazgokhan.basestructure.di.qualifier.IoDispatcher
-import com.yilmazgokhan.basestructure.domain.GetUserUseCase
+import com.yilmazgokhan.basestructure.domain.usecase.GetUserUseCase
 import com.yilmazgokhan.basestructure.util.Resource
 import com.yilmazgokhan.basestructure.util.State
 import kotlinx.coroutines.CoroutineDispatcher
@@ -39,7 +39,6 @@ class HomeFragmentViewModel @ViewModelInject constructor(
 
     init {
         LogUtils.d("$this initialize")
-
         getUser("yilmazgokhan")
     }
 

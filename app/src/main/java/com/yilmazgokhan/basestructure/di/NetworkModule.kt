@@ -4,6 +4,8 @@ import com.yilmazgokhan.basestructure.BuildConfig
 import com.yilmazgokhan.basestructure.data.remote.source.UserDataSourceImpl
 import com.yilmazgokhan.basestructure.data.remote.service.UserService
 import com.yilmazgokhan.basestructure.data.repository.UserDataSource
+import com.yilmazgokhan.basestructure.data.repository.UserRepositoryImpl
+import com.yilmazgokhan.basestructure.domain.repository.UserRepository
 import com.yilmazgokhan.basestructure.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -20,7 +22,7 @@ import javax.inject.Singleton
  */
 @Module
 @InstallIn(ApplicationComponent::class)
-object ApiModule {
+object NetworkModule {
 
     @Provides
     fun provideBaseUrl() = Constants.BASE_URL
@@ -51,9 +53,4 @@ object ApiModule {
     @Singleton
     fun provideUserService(retrofit: Retrofit): UserService =
         retrofit.create(UserService::class.java)
-
-    @Provides
-    @Singleton
-    fun provideUserDataSourceImpl(userDataSource: UserDataSourceImpl): UserDataSource =
-        userDataSource
 }
