@@ -1,4 +1,4 @@
-package com.yilmazgokhan.basestructure.data.model
+package com.yilmazgokhan.basestructure.data.remote.model
 
 import com.google.gson.annotations.Expose
 

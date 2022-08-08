@@ -1,7 +1,7 @@
 package com.yilmazgokhan.basestructure.domain
 
 import com.blankj.utilcode.util.LogUtils
-import com.yilmazgokhan.basestructure.data.model.UserResponse
+import com.yilmazgokhan.basestructure.data.remote.model.UserResponse
 import com.yilmazgokhan.basestructure.data.repository.UserRepository
 import com.yilmazgokhan.basestructure.util.State
 import kotlinx.coroutines.flow.Flow
@@ -16,12 +16,12 @@ class GetUserUseCase @Inject constructor(private val userRepository: UserReposit
             val result = userRepository.getUser(username)
             if (result.isSuccessful)
                 emit(State.Success(result.body()))
-            //else
-                //emit(State.Error(result.message()))
+            else
+                emit(State.Error(message = result.message()))
 
         } catch (e: Exception) {
             LogUtils.d("$this ${e.localizedMessage}")
-            //emit(State.Error(e.localizedMessage))
+            emit(State.Error(message = e.localizedMessage))
         }
     }
 }

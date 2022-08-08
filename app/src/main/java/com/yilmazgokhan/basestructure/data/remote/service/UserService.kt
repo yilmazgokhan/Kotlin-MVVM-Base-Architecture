@@ -1,6 +1,6 @@
-package com.yilmazgokhan.basestructure.data.remote
+package com.yilmazgokhan.basestructure.data.remote.service
 
-import com.yilmazgokhan.basestructure.data.model.UserResponse
+import com.yilmazgokhan.basestructure.data.remote.model.UserResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

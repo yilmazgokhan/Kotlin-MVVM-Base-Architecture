@@ -1,10 +1,9 @@
 package com.yilmazgokhan.basestructure.di
 
 import com.yilmazgokhan.basestructure.BuildConfig
-import com.yilmazgokhan.basestructure.data.remote.UserDataSourceImpl
-import com.yilmazgokhan.basestructure.data.remote.UserService
+import com.yilmazgokhan.basestructure.data.remote.source.UserDataSourceImpl
+import com.yilmazgokhan.basestructure.data.remote.service.UserService
 import com.yilmazgokhan.basestructure.data.repository.UserDataSource
-import com.yilmazgokhan.basestructure.data.repository.UserRepository
 import com.yilmazgokhan.basestructure.util.Constants
 import dagger.Module
 import dagger.Provides
