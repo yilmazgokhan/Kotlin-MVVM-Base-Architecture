@@ -10,16 +10,18 @@ import javax.inject.Inject
 
 class GetUserUseCase @Inject constructor(private val userRepository: UserRepository) {
 
-    operator fun invoke(username: String): Flow<State<UserResponse>> = flow {
+    suspend operator fun invoke(username: String): Flow<State<UserResponse>> = flow {
         try {
-            //emit(State.loading())
-            val result = userRepository.getUser(username = username)
+            emit(State.Loading())
+            val result = userRepository.getUser(username)
             if (result.isSuccessful)
-                emit(State.success(result.body()))
-            //else emit(State.error(result.message()))
+                emit(State.Success(result.body()))
+            //else
+                //emit(State.Error(result.message()))
+
         } catch (e: Exception) {
-            LogUtils.d(this)
-            //emit(State.error(e.localizedMessage.toString()))
+            LogUtils.d("$this ${e.localizedMessage}")
+            //emit(State.Error(e.localizedMessage))
         }
     }
 }

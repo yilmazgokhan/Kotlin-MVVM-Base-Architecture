@@ -1,6 +1,5 @@
 package com.yilmazgokhan.basestructure.ui.home
 
-import android.util.Log
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
@@ -8,13 +7,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.blankj.utilcode.util.LogUtils
+import com.blankj.utilcode.util.StringUtils
+import com.yilmazgokhan.basestructure.R
 import com.yilmazgokhan.basestructure.base.BaseViewModel
 import com.yilmazgokhan.basestructure.data.model.UserResponse
 import com.yilmazgokhan.basestructure.di.qualifier.IoDispatcher
-import com.yilmazgokhan.basestructure.data.repository.UserRepository
 import com.yilmazgokhan.basestructure.domain.GetUserUseCase
+import com.yilmazgokhan.basestructure.util.Resource
 import com.yilmazgokhan.basestructure.util.State
-import com.yilmazgokhan.basestructure.util.Status
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
@@ -32,8 +32,8 @@ class HomeFragmentViewModel @ViewModelInject constructor(
 ) : BaseViewModel() {
 
     //region city info
-    private val _user = MutableLiveData<State<UserResponse?>>()
-    val user: LiveData<State<UserResponse?>>
+    private val _user = MutableLiveData<Resource<UserResponse>>()
+    val user: LiveData<Resource<UserResponse>>
         get() = _user
     //endregion
 
@@ -49,19 +49,24 @@ class HomeFragmentViewModel @ViewModelInject constructor(
     private fun getUser(username: String) {
         viewModelScope.launch {
             getUserUseCase.invoke("yilmazgokhan").collect {
-                Log.d("TAG", ": ")
+                when (it) {
+                    is State.Loading -> {
+                        _user.postValue(Resource.loading())
+                    }
+                    is State.Success -> {
+                        _user.postValue(Resource.success(it.data))
+                    }
+                    is State.Error -> {
+                        _user.postValue(
+                            Resource.error(
+                                message = it.message ?: StringUtils.getString(
+                                    R.string.something_went_wrong
+                                )
+                            )
+                        )
+                    }
+                }
             }
         }
-        /*
-        viewModelScope.launch {
-            _user.postValue(State.loading(null))
-            userRepository.getUser(username = username).let {
-                if (it.isSuccessful) {
-                    _user.postValue(State.success(it.body()))
-                } else
-                    _user.postValue(State.error(it.errorBody().toString(), null))
-            }
-        }
-         */
     }
 }

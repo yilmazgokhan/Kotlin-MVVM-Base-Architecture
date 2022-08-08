@@ -1,23 +1,14 @@
 package com.yilmazgokhan.basestructure.util
 
-data class State<T>(
-    val status: Status? = null,
+sealed class State<T>(
     val data: T? = null,
     val message: String? = null
 ) {
-    companion object {
 
-        fun <T> success(data: T?): State<T> {
-            return State(Status.SUCCESS, data, null)
-        }
+    class Success<T>(data: T?) : State<T>(data)
 
-        fun <T> error(msg: String, data: T? = null): State<T> {
-            return State(Status.ERROR, data, msg)
-        }
+    class Error<T>(message: String, data: T? = null) : State<T>(data, message)
 
-        fun <T> loading(): State<T> {
-            return State(Status.LOADING, null, null)
-        }
+    class Loading<T>(data: T? = null) : State<T>(data = data)
 
-    }
 }
