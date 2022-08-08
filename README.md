@@ -24,7 +24,9 @@ This project is intent to provide a template with basic MVVM architecture framew
 ## Project Structure
 
 - base: Base class for View and ViewModel instances.
+- data: It contains all the data accessing and manipulating components.
 - di: The directory will contain the classes responsible for dependency injection.
+- domain: The directory contains all rules.
 - ui: View classes along with their corresponding ViewModel in presentation.
 - util: Utility classes.
 
@@ -38,16 +40,18 @@ The main players in the MVVM pattern are:
 
 - Model: abstracts the data source. The ViewModel works with the DataModel to get and save the data
 
+<img src="/screenshots/mvvm.png">
+
 The MVVM pattern supports two-way data binding between the View and ViewModel and there is a many-to-one relationship between View and ViewModel.
 
-<img src="/screenshots/mvvm.png">
+<img src="/screenshots/data.png">
 
 ## TO DO
 
-- [ ] Integration of Retrofit.
-- [ ] Integration of Repository Pattern.
-- [ ] Integration of UseCase.
-- [ ] Example of a HTTP call.
+- [x] Integration of Retrofit.
+- [x] Integration of Repository Pattern.
+- [x] Integration of UseCase.
+- [x] Example of a HTTP call.
 - [ ] Add some unit tests.
 
 ## Libraries
@@ -57,6 +61,9 @@ The MVVM pattern supports two-way data binding between the View and ViewModel an
 - [Android Architecture Components](https://developer.android.com/topic/libraries/architecture/index.html)
 - [Coroutines](https://developer.android.com/kotlin/coroutines)
 - [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
+- [Flow](https://kotlinlang.org/docs/flow.html)
+- [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
+- [Retrofit](https://square.github.io/retrofit/)
 - [Coil](https://coil-kt.github.io/coil/)
 - [Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)
 - [Android Util](https://github.com/Blankj/AndroidUtilCode)
