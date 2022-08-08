@@ -47,7 +47,7 @@ class HomeFragmentViewModel @ViewModelInject constructor(
      */
     private fun getUser(username: String) {
         viewModelScope.launch {
-            getUserUseCase.invoke("yilmazgokhan").collect {
+            getUserUseCase.invoke(username).collect {
                 when (it) {
                     is State.Loading -> {
                         _user.postValue(Resource.loading())
